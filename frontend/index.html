@@ -9,8 +9,25 @@
         <link rel="stylesheet" href="">
     </head>
     <body>
-        <h1>Fuc You World!</h1>
+        <h1>Fuck You World!</h1>
+
+        <form id="form">
+            <input type="text" placeholder="Enter text here">
+            <button type="submit" onclick="addText()">Submit</button>
+        </form>
         
-        <script src="" async defer></script>
+        <script src="" async defer>
+            async function addText() {
+                await fetch('/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: document.getElementById('form').value
+                    })
+                });
+            }
+        </script>
     </body>
 </html>
