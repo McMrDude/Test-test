@@ -15,6 +15,10 @@
             <input type="text" placeholder="Enter text here">
             <button type="submit" onclick="addText()">Submit</button>
         </form>
+
+        <div id="shit">
+
+        </div>
         
         <script src="" async defer>
             async function addText() {
@@ -27,6 +31,17 @@
                         text: document.getElementById('form').value
                     })
                 });
+            };
+
+
+            async function updateDiv() {
+                const textres = await fetch("/text");
+                const text = await textres.json();
+
+                text.array.forEach((text) => {
+                    document.getElementById('shit').innerHTML = text.text;
+                });
+                    
             }
         </script>
     </body>
