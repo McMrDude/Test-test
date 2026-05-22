@@ -21,17 +21,27 @@
         </div>
         
         <script src="" async defer>
-            async function addText() {
+            updateDiv();
+
+            const form = document.getElementById("form");
+
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+
+                const data = new FormData(e.target)
+
                 await fetch('/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        text: document.getElementById('form').value
+                        text: data
                     })
                 });
-            };
+
+                updateDiv();
+            });
 
 
             async function updateDiv() {
