@@ -21,20 +21,20 @@ const pool = new pg.Pool({
 app.post("/submit", (req, res) => {
     console.log(req.body);
     pool.query(`
-        INSERT INTO table (text)
+        INSERT INTO messages (text)
         VALUES ($1)
         `, [req.body.text], (err, result) => {
         if (err) {
             console.error('Error inserting data into database:', err);
             res.status(500).json({ error: 'Internal server error' });
-        } else {
+        messages} else {
             res.json({ message: 'Form submitted successfully!' });
         }
     });
 });
 
 app.get("/text", async (req, res) => {
-    const text = await pool.query('SELECT text FROM table');
+    const text = await pool.query('SELECT text FROM messages');
     res.json(text);
 });
 
