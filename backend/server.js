@@ -33,7 +33,7 @@ app.post('/submit', (req, res) => {
 
 app.get('/text', async (req, res) => {
     const text = await pool.query('SELECT text FROM table');
-    res.json(text.rows);
+    res.json(text);
 });
 
 
