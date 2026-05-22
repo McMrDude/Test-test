@@ -12,7 +12,7 @@
         <h1>Fuck You World!</h1>
 
         <form id="form">
-            <input type="text" placeholder="Enter text here">
+            <input type="text" id="text-input" placeholder="Enter text here">
             <button type="submit">Submit</button>
         </form>
 
@@ -23,25 +23,25 @@
         <script src="" async defer>
             updateDiv();
 
-            const form = document.querySelector('form');
+            /* const form = document.querySelector('form'); */
 
-            form.addEventListener("submit", async (e) => {
+            /* form.addEventListener("submit", async (e) => {
                 e.preventDefault();
 
-                const data = new FormData(e.target)
-
+                const data = new FormData(e.target) */
+            async function addText() {
                 await fetch('/submit', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        text: data
+                        text: document.getElementById("text-input").value
                     })
                 });
                 console.log("Form submitted");
                 updateDiv();
-            });
+            };
 
 
             async function updateDiv() {
