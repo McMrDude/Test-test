@@ -39,7 +39,7 @@
                         text: data
                     })
                 });
-
+                console.log("Form submitted");
                 updateDiv();
             });
 
@@ -47,11 +47,12 @@
             async function updateDiv() {
                 const textres = await fetch("/text");
                 const text = await textres.json();
-
+                
+                document.getElementById('shit').innerHTML = '';
                 text.array.forEach((text) => {
-                    document.getElementById('shit').innerHTML = text.text;
+                    document.getElementById('shit').innerHTML += `<p>${text.text}</p>`;
                 });
-                    
+                    console.log("updateDiv is happening")
             }
         </script>
     </body>
