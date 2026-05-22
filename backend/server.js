@@ -35,7 +35,7 @@ app.post("/submit", (req, res) => {
 
 app.get("/text", async (req, res) => {
     const text = await pool.query('SELECT text FROM messages');
-    res.json(text);
+    res.json(text.rows);
 });
 
 
