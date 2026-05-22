@@ -16,6 +16,7 @@ const pool = new pg.Pool({
   }
 });
 
+app.use(express.json());
 
 app.post("/submit", (req, res) => {
     pool.query(`
