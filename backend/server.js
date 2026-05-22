@@ -6,6 +6,8 @@ import pg from "pg";
 const app = express();
 const PORT = process.env.PORT ||3000;
 
+app.use(express.json());
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -16,9 +18,8 @@ const pool = new pg.Pool({
   }
 });
 
-app.use(express.json());
-
 app.post("/submit", (req, res) => {
+    console.log(req.body);
     pool.query(`
         INSERT INTO table (text)
         VALUES ($1)
