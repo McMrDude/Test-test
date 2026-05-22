@@ -49,7 +49,7 @@
                 const text = await textres.json();
                 
                 document.getElementById('shit').innerHTML = '';
-                text.array.forEach((text) => {
+                text.forEach((text) => {
                     document.getElementById('shit').innerHTML += `<p>${text.text}</p>`;
                 });
                     console.log("updateDiv is happening")
